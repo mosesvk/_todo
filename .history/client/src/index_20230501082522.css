@@ -33,5 +33,5 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    border-bottom: #0000000d 1px solid
+    border-bottom: #0000000d;
 }

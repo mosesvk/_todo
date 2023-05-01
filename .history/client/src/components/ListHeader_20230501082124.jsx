@@ -7,7 +7,7 @@ const ListHeader = ({listName}) => {
   }
 
   return (
-    <div className='list-header'>
+    <div>
       <h1>{listName}</h1>
       <div className="button-container">
         <button className="create">Add New</button>
