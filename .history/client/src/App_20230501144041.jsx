@@ -1,11 +1,8 @@
-import { useCallback, useEffect } from 'react'
 import ListHeader from './components/ListHeader'
 
 const App = () => {
 
   const getData = async () => {
-
-    const userEmail = 'test@test.com'
 
     try {
       const response = await fetch(`http://localhost:8000/todos/${userEmail}`)
@@ -15,10 +12,6 @@ const App = () => {
       console.error(err)
     }
   }
-
-  useEffect(() => {
-    getData()
-  }, [])
 
   return (
     <div className='app'>

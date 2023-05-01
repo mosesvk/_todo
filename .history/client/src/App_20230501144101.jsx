@@ -5,8 +5,6 @@ const App = () => {
 
   const getData = async () => {
 
-    const userEmail = 'test@test.com'
-
     try {
       const response = await fetch(`http://localhost:8000/todos/${userEmail}`)
       const json = await response.json() 
