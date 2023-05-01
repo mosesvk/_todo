@@ -1,11 +1,11 @@
-import ListHeader from './components/ListHeader'
+import ListHeader from './components'
 
 const App = () => {
 
   return (
-    <div>
+    <>
       <ListHeader listName='Envy Apple' />
-    </div>
+    </>
   )
 }
 

@@ -1,8 +1,8 @@
 import React from 'react'
 
-const ListHeader = () => {
+const ListHeader = ({listName}) => {
   return (
-    <div>ListHeader</div>
+    <div>{listName}</div>
   )
 }
 
