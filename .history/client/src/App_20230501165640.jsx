@@ -21,13 +21,13 @@ const App = () => {
     getData()
   }, [])
 
-  // console.log(tasks)
+  console.log(tasks)
 
   const sortedTasks = tasks?.sort((a, b) => new Date(a.date) - new Date(b.date))
 
   return (
     <div className='app'>
-      <ListHeader listName='Todo List' />
+      <ListHeader listName='Envy Apple' />
       {sortedTasks?.map((task) => <ListItem key={task.id} task={task} />)}
     </div>
   )

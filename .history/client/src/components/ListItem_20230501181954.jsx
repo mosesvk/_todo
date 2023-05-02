@@ -7,15 +7,10 @@ const ListItem = ({task}) => {
 
   return (
     <div className='list-item'>
-      <div className='info-container'>
+      <div>
         <TickIcon />
         <p className='task-title'>{title}</p>
         <ProgressBar />
-      </div>
-
-      <div className='button-container'>
-        <button className='edit'>EDIT</button>
-        <button className='delete'>DELETE</button>
       </div>
     </div>
   )

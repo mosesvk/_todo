@@ -27,7 +27,7 @@ const App = () => {
 
   return (
     <div className='app'>
-      <ListHeader listName='Todo List' />
+      <ListHeader listName='Envy Apple' />
       {sortedTasks?.map((task) => <ListItem key={task.id} task={task} />)}
     </div>
   )

@@ -12,11 +12,6 @@ const ListItem = ({task}) => {
         <p className='task-title'>{title}</p>
         <ProgressBar />
       </div>
-
-      <div className='button-container'>
-        <button className='edit'>EDIT</button>
-        <button className='delete'>DELETE</button>
-      </div>
     </div>
   )
 }

@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import ListHeader from './components/ListHeader'
-import ListItem from './components/ListItem'
 
 const App = () => {
   const userEmail = 'test@test.com'
@@ -21,14 +20,11 @@ const App = () => {
     getData()
   }, [])
 
-  // console.log(tasks)
-
-  const sortedTasks = tasks?.sort((a, b) => new Date(a.date) - new Date(b.date))
+  console.log(tasks)
 
   return (
     <div className='app'>
-      <ListHeader listName='Todo List' />
-      {sortedTasks?.map((task) => <ListItem key={task.id} task={task} />)}
+      <ListHeader listName='Envy Apple' />
     </div>
   )
 }
