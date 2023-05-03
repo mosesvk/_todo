@@ -12,8 +12,9 @@ const Modal = () => {
         <div className='form-title-container'>
           <h3>Let's</h3>
         </div>
+      </div>
 
-        <form>
+      <form>
         <input 
           required
           maxLength={30}
@@ -22,10 +23,8 @@ const Modal = () => {
           value={''}
           onChange={handleChange}
         />
-        <label for='range'>Drag to select your current progress</label>
         <input 
          required
-         id='range'
          type='range'
          min='0'
          max='100'
@@ -33,11 +32,8 @@ const Modal = () => {
          value={''}
          onChange={handleChange}
         />
-        <input className='edit' type='submit' />
+        <input type='submit' />
       </form>
-      </div>
-
-
     </div>
   )
 }
