@@ -34,7 +34,7 @@ app.post('/todos', (req, res) => {
 
   try {
     pool.query(
-      `INSERT INTO todos (id, user_email, title, progress, date) VALUES ($1, $2, $3, $4, $5)`,
+      `INSERT INTO todos (id, user_email, title, progress, date) VALUES($1, $2, $3, $4, $5),`,
       [id, user_email, title, progress, date],
       (error, results) => {
         if (error) {

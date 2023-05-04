@@ -18,12 +18,14 @@ const Modal = ({ mode, task, setShowModal }) => {
   const postData = (e) => {
     e.preventDefault();
 
+    try {
       axios.post(`http://localhost:8000/todos`, { data }).then((res) => {
-        console.log('hi')
-        console.log(res);
-      }).catch((err) => console.error(err));
+        console.log(res.json());
+      });
 
-
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const handleChange = (e) => {

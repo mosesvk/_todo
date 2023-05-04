@@ -17,7 +17,7 @@ const ListHeader = ({listName}) => {
         <button className="create" onClick={() => setShowModal(true)}>Add New</button>
         <button className="signout" onClick={signOut}>Sign Out</button>
       </div>
-      {showModal && <Modal mode={'create'} setShowModal={setShowModal}/>}
+      <Modal mode={'create'} />
     </div>
   )
 }

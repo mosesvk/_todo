@@ -14,10 +14,10 @@ const ListHeader = ({listName}) => {
     <div className='list-header'>
       <h1>{listName}</h1>
       <div className="button-container">
-        <button className="create" onClick={() => setShowModal(true)}>Add New</button>
+        <button className="create">Add New</button>
         <button className="signout" onClick={signOut}>Sign Out</button>
       </div>
-      {showModal && <Modal mode={'create'} setShowModal={setShowModal}/>}
+      { showModal && <Modal mode={'create'} />}
     </div>
   )
 }

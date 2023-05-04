@@ -11,19 +11,21 @@ const Modal = ({ mode, task, setShowModal }) => {
     date: editMode ? '' : new Date()
   });
 
-  // useEffect(() => {
-  //   console.log(data);
-  // }, [data]);
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
-  const postData = (e) => {
+  const postData = () => {
     e.preventDefault();
 
+    try {
       axios.post(`http://localhost:8000/todos`, { data }).then((res) => {
-        console.log('hi')
-        console.log(res);
-      }).catch((err) => console.error(err));
+        console.log(res.json());
+      });
 
-
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const handleChange = (e) => {

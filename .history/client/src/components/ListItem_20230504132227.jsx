@@ -21,7 +21,7 @@ const ListItem = ({task}) => {
         <button className='delete'>DELETE</button>
       </div>
 
-      {showModal && <Modal task={task} mode={'edit'} setShowModal={setShowModal}/>}
+      {setShowModal && <Modal task={task} setShowModal={setShowModal}/>}
     </div>
   )
 }

@@ -1,30 +1,37 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import {useEffect, useState} from 'react';
 
-const Modal = ({ mode, task, setShowModal }) => {
+const Modal = ({mode, task,  setShowModal}) => {
+
   const editMode = mode === 'edit' ? true : false;
 
   const [data, setData] = useState({
     user_email: editMode ? task.user_email : 'test@test.com',
     title: editMode ? task.title : '',
     progress: editMode ? task.progress : 50,
-    date: editMode ? '' : new Date()
+    data: editMode ? '' : new Date()
   });
 
-  // useEffect(() => {
-  //   console.log(data);
-  // }, [data]);
+  useEffect(() => {
+    console.log(data)
+  }, [data])
 
-  const postData = (e) => {
-    e.preventDefault();
+  const postData = async (e) => {
+    e.preventDefault() 
 
-      axios.post(`http://localhost:8000/todos`, { data }).then((res) => {
-        console.log('hi')
-        console.log(res);
-      }).catch((err) => console.error(err));
+    console.log(user_email)
 
+    try {
+     const response = await fetch(`http://localhost:8000/todos/${user_email}`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      })
 
-  };
+      console.log(response.json())
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,6 +40,7 @@ const Modal = ({ mode, task, setShowModal }) => {
       ...data,
       [name]: value
     }));
+
   };
 
   return (
@@ -40,7 +48,7 @@ const Modal = ({ mode, task, setShowModal }) => {
       <div className='modal'>
         <div className='form-title-container'>
           <h3>Let's {mode} the task</h3>
-          <button onClick={() => setShowModal(false)}>X</button>
+          <button onClick={() => setShowModal(false)} >X</button>
         </div>
 
         <form>
@@ -63,11 +71,7 @@ const Modal = ({ mode, task, setShowModal }) => {
             value={data.progress}
             onChange={(e) => handleChange(e)}
           />
-          <input
-            className='edit'
-            type='submit'
-            onClick={editMode ? '' : postData}
-          />
+          <input className='edit' type='submit' onClick={editMode ? '' : postData} />
         </form>
       </div>
     </div>

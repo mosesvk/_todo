@@ -17,11 +17,11 @@ const ListItem = ({task}) => {
       </div>
 
       <div className='button-container'>
-        <button className='edit' onClick={() => setShowModal(true)}>EDIT</button>
+        <button className='edit'>EDIT</button>
         <button className='delete'>DELETE</button>
       </div>
 
-      {showModal && <Modal task={task} mode={'edit'} setShowModal={setShowModal}/>}
+      {showEditModal && <Modal task={task} setShowModal={setShowModal}/>}
     </div>
   )
 }

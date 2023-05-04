@@ -6,7 +6,7 @@ import Modal from './Modal'
 const ListItem = ({task}) => {
   const {date, id, progress, title, user_email:email} = task
 
-  const [showModal, setShowModal] = useState(false)
+  const [showEditModal, setShowEditModal] = useState(false)
 
   return (
     <div className='list-item'>
@@ -17,11 +17,11 @@ const ListItem = ({task}) => {
       </div>
 
       <div className='button-container'>
-        <button className='edit' onClick={() => setShowModal(true)}>EDIT</button>
+        <button className='edit'>EDIT</button>
         <button className='delete'>DELETE</button>
       </div>
 
-      {showModal && <Modal task={task} mode={'edit'} setShowModal={setShowModal}/>}
+      {showEditModal && <Modal />}
     </div>
   )
 }

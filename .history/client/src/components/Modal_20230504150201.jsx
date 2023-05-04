@@ -20,7 +20,7 @@ const Modal = ({ mode, task, setShowModal }) => {
 
       axios.post(`http://localhost:8000/todos`, { data }).then((res) => {
         console.log('hi')
-        console.log(res);
+        console.log(res.json());
       }).catch((err) => console.error(err));
 
 
