@@ -3,7 +3,7 @@ import ListHeader from './components/ListHeader'
 import ListItem from './components/ListItem'
 
 const App = () => {
-  const userEmail = 'momoney@test.com'
+  const userEmail = 'test@test.com'
   const [tasks, setTasks] = useState(null)
 
   const getData = async () => {
@@ -13,6 +13,9 @@ const App = () => {
       const json = await response.json() 
       setTasks(json)
 
+      if (response.status === 200) {
+        console.log('200 STATUS')
+      }
     } catch (err) {
       console.error(err)
     }
@@ -28,8 +31,8 @@ const App = () => {
 
   return (
     <div className='app'>
-      <ListHeader listName='Todo List' getData={getData} />
-      {sortedTasks?.map((task) => <ListItem key={task.id} task={task} getData={getData} />)}
+      <ListHeader listName='Todo List' />
+      {sortedTasks?.map((task) => <ListItem key={task.id} task={task} />)}
     </div>
   )
 }

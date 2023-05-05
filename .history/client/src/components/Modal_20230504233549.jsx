@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const Modal = ({ mode, task, setShowModal, getData }) => {
+const Modal = ({ mode, task, setModal, getData }) => {
   const editMode = mode === 'edit' ? true : false;
 
   const [data, setData] = useState({
@@ -24,7 +24,7 @@ const Modal = ({ mode, task, setShowModal, getData }) => {
 
       if (res.status === 200) {
         console.log('200 STATUS')
-        setShowModal(false)
+        setModal(false)
         getData()
       }
     } catch (err) {
@@ -32,20 +32,6 @@ const Modal = ({ mode, task, setShowModal, getData }) => {
     }
 
   };
-
-  const editData = async (e) => {
-    e.preventDefault()
-
-    try {
-      const res = await axios.patch(`http://localhost:8000/todos/${task.user_email}/${task.id}`, {data})
-      console.log(res)
-
-      
-    } catch (err) {
-      console.error(err)
-      
-    }
-  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -87,7 +73,7 @@ const Modal = ({ mode, task, setShowModal, getData }) => {
           <input
             className='edit'
             type='submit'
-            onClick={editMode ? editData : postData}
+            onClick={editMode ? '' : postData}
           />
         </form>
       </div>

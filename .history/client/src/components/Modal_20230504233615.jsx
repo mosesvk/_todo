@@ -33,20 +33,6 @@ const Modal = ({ mode, task, setShowModal, getData }) => {
 
   };
 
-  const editData = async (e) => {
-    e.preventDefault()
-
-    try {
-      const res = await axios.patch(`http://localhost:8000/todos/${task.user_email}/${task.id}`, {data})
-      console.log(res)
-
-      
-    } catch (err) {
-      console.error(err)
-      
-    }
-  }
-
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -87,7 +73,7 @@ const Modal = ({ mode, task, setShowModal, getData }) => {
           <input
             className='edit'
             type='submit'
-            onClick={editMode ? editData : postData}
+            onClick={editMode ? '' : postData}
           />
         </form>
       </div>
