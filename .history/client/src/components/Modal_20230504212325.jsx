@@ -18,6 +18,8 @@ const Modal = ({ mode, task, setShowModal }) => {
   const postData = async (e) => {
     e.preventDefault();
 
+    console.log(data)
+
     try {
       const res = await axios.post(`http://localhost:8000/todos`, { data })
       console.log(res)

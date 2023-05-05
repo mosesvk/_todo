@@ -39,6 +39,7 @@ app.post('/todos', async (req, res) => {
       [id, user_email, title, progress, date]
     );
 
+    console.log(newTodo);
     res.json(newTodo);
   } catch (err) {
     console.error(err);

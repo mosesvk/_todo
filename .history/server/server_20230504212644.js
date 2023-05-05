@@ -28,10 +28,10 @@ app.get('/todos/:userEmail', async (req, res) => {
 
 // create a todo
 app.post('/todos', async (req, res) => {
-  const { user_email, title, progress, date } = req.body.data;
+  const { user_email, title, progress, date } = req.body;
   const id = uuidv4();
 
-  console.log(user_email);
+  console.log(req.body);
 
   try {
     const newTodo = await pool.query(
@@ -39,6 +39,7 @@ app.post('/todos', async (req, res) => {
       [id, user_email, title, progress, date]
     );
 
+    console.log(newTodo);
     res.json(newTodo);
   } catch (err) {
     console.error(err);
