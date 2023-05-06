@@ -19,37 +19,37 @@ const Modal = ({ mode, task, setShowModal, getData }) => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/todos`, { data });
-      console.log(res);
+      const res = await axios.post(`http://localhost:8000/todos`, { data })
+      console.log(res)
 
       if (res.status === 200) {
-        console.log('200 STATUS');
-        setShowModal(false);
-        getData();
+        console.log('200 STATUS')
+        setShowModal(false)
+        getData()
       }
     } catch (err) {
-      console.error(err);
+      console.error(err)
     }
+
   };
 
   const editData = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     try {
-      const res = await axios.put(`http://localhost:8000/todos/${task.id}`, {
-        data
-      });
+      const res = await axios.patch(`http://localhost:8000/todos/${task.id}`, {data})
 
       if (res.status === 200) {
-        console.log(res);
-        setShowModal(false);
-        getData();
+        console.log(res)
+        setShowModal(false)
+        getData()
       }
+      
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      
     }
-  };
-
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -77,7 +77,7 @@ const Modal = ({ mode, task, setShowModal, getData }) => {
             value={data.title}
             onChange={handleChange}
           />
-          <label htmlFor='range'>Drag to select your current progress</label>
+          <label for='range'>Drag to select your current progress</label>
           <input
             required
             id='range'

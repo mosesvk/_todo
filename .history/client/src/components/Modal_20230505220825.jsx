@@ -19,7 +19,7 @@ const Modal = ({ mode, task, setShowModal, getData }) => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/todos`, { data });
+      const res = await axios.post(`http://localhost:8000/todos`, { data });
       console.log(res);
 
       if (res.status === 200) {

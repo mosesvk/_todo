@@ -14,9 +14,9 @@ const ListItem = ({task, getData}) => {
     try {
       axios.delete(`http://localhost:8000/todos/${task.id}`)
 
-      alert(`Delete Successful - todo id: ${id}`)
       setShowModal(false)
       getData()
+      alert(`Delete Successful - todo id: ${id}`)
 
     } catch (err) {
       console.error(err)

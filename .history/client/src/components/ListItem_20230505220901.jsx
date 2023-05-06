@@ -1,6 +1,5 @@
 import {useState} from 'react'
 import TickIcon from './TickIcon'
-import axios from 'axios'
 import ProgressBar from './ProgressBar'
 import Modal from './Modal'
 

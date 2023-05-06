@@ -52,27 +52,12 @@ app.put('/todos/:id', async (req, res) => {
 
   try {
     const updatedTodo = await pool.query(
-      'UPDATE todos SET title = $1, progress = $2, user_email = $3 WHERE id = $4',
+      'UPDATE todos SET title = $1, progress = $2, userEmail = $3 WHERE id = $4',
       [title, progress,user_email, id]
     );
-      res.json(updatedTodo)
   } catch (err) {
     console.error(err);
   }
 });
-
-
-// delete a todo 
-app.delete('/todos/:id', async (req, res) => {
-  const {id} = req.params
-
-  try {
-    const deletedTodo = pool.query('DELETE FROM public.todos WHERE ID = $1', [id])
-
-    res.send(deletedTodo)
-  } catch (err) {
-    console.error(err)
-  }
-})
 
 app.listen(PORT, () => console.log(`SERVER is running on PORT ${PORT}`));

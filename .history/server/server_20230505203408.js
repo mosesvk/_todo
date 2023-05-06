@@ -61,18 +61,4 @@ app.put('/todos/:id', async (req, res) => {
   }
 });
 
-
-// delete a todo 
-app.delete('/todos/:id', async (req, res) => {
-  const {id} = req.params
-
-  try {
-    const deletedTodo = pool.query('DELETE FROM public.todos WHERE ID = $1', [id])
-
-    res.send(deletedTodo)
-  } catch (err) {
-    console.error(err)
-  }
-})
-
 app.listen(PORT, () => console.log(`SERVER is running on PORT ${PORT}`));

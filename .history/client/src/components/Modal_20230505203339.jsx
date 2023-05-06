@@ -19,7 +19,7 @@ const Modal = ({ mode, task, setShowModal, getData }) => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/todos`, { data });
+      const res = await axios.post(`http://localhost:8000/todos`, { data });
       console.log(res);
 
       if (res.status === 200) {
@@ -40,6 +40,8 @@ const Modal = ({ mode, task, setShowModal, getData }) => {
         data
       });
 
+      console.log(res)
+
       if (res.status === 200) {
         console.log(res);
         setShowModal(false);
@@ -49,7 +51,6 @@ const Modal = ({ mode, task, setShowModal, getData }) => {
       console.error(err);
     }
   };
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;

@@ -19,7 +19,7 @@ const Modal = ({ mode, task, setShowModal, getData }) => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/todos`, { data });
+      const res = await axios.post(`http://localhost:8000/todos`, { data });
       console.log(res);
 
       if (res.status === 200) {
@@ -50,6 +50,16 @@ const Modal = ({ mode, task, setShowModal, getData }) => {
     }
   };
 
+  const deleteData = async (e) => {
+
+    try {
+      const {id} = axios.delete(`http://localhost:8000/todos/`)
+
+      alert(`todo id: ${id}`)
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
