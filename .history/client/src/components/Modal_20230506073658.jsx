@@ -16,13 +16,13 @@ const Modal = ({ mode, task, setShowModal, getData }) => {
   //   console.log(data);
   // }, [data]);
 
-  // console.log(import.meta.env)
+  console.log(process.env)
 
   const postData = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(`${import.meta.env.VITE__SERVER_URL}`, { data });
+      const res = await axios.post(`http://localhost:8000/todos`, { data });
       console.log(res);
 
       if (res.status === 200) {
@@ -39,7 +39,7 @@ const Modal = ({ mode, task, setShowModal, getData }) => {
     e.preventDefault();
 
     try {
-      const res = await axios.put(`${import.meta.env.VITE__SERVER_URL}${task.id}`, {
+      const res = await axios.put(`http://localhost:8000/todos/${task.id}`, {
         data
       });
 

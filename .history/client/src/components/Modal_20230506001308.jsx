@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-
+require('dotenv').config()
 
 const Modal = ({ mode, task, setShowModal, getData }) => {
   const editMode = mode === 'edit' ? true : false;
@@ -16,13 +16,11 @@ const Modal = ({ mode, task, setShowModal, getData }) => {
   //   console.log(data);
   // }, [data]);
 
-  // console.log(import.meta.env)
-
   const postData = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(`${import.meta.env.VITE__SERVER_URL}`, { data });
+      const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/todos`, { data });
       console.log(res);
 
       if (res.status === 200) {
@@ -39,7 +37,7 @@ const Modal = ({ mode, task, setShowModal, getData }) => {
     e.preventDefault();
 
     try {
-      const res = await axios.put(`${import.meta.env.VITE__SERVER_URL}${task.id}`, {
+      const res = await axios.put(`http://localhost:8000/todos/${task.id}`, {
         data
       });
 

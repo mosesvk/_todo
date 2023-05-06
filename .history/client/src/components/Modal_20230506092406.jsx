@@ -22,7 +22,7 @@ const Modal = ({ mode, task, setShowModal, getData }) => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(`${import.meta.env.VITE__SERVER_URL}`, { data });
+      const res = await axios.post(`${import.meta.env.VITE__SERVER_URL}/todos`, { data });
       console.log(res);
 
       if (res.status === 200) {
@@ -39,7 +39,7 @@ const Modal = ({ mode, task, setShowModal, getData }) => {
     e.preventDefault();
 
     try {
-      const res = await axios.put(`${import.meta.env.VITE__SERVER_URL}${task.id}`, {
+      const res = await axios.put(`${import.meta.env.VITE__SERVER_URL}todos/${task.id}`, {
         data
       });
 
