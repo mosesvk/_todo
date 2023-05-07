@@ -5,7 +5,6 @@ const { v4: uuidv4 } = require('uuid');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 const pool = require('./db');
-const jwt = require('jsonwebtoken')
 
 const app = express();
 
@@ -89,17 +88,8 @@ app.post('/signup', (req, res) => {
 
   try {
     pool.query('INSERT INTO users (email, hashed_password) VALUES ($1, $2)', [email, hashedPassword])
-
-    const token = jwt.sign({email}, 'secret', {expiresIn: '1hr'})
-
-
-    console.log({email, token})
-    res.json({email, token})
   } catch (err) {
     console.error(err);
-    if (err) {
-      res.json({detail: err.detail})
-    }
   }
 });
 

@@ -10,7 +10,7 @@ const App = () => {
   const userEmail = cookies.Email;
   const [tasks, setTasks] = useState(null);
 
-  
+  console.log(cookies)
 
   const getData = async () => {
     try {

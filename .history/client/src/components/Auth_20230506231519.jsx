@@ -10,7 +10,7 @@ const Auth = () => {
   const [confirmPassword, setConfirmPassword] = useState(null);
   const [error, setError] = useState(null);
 
-  console.log(cookies)
+  console.log(cookie)
 
   const viewLogin = (status) => {
     setError(null);
@@ -37,8 +37,6 @@ const Auth = () => {
     } else {
       setCookie('Email', data.email)
       setCookie('AuthToken', data.tokem)
-
-      window.location.reload()
     }
   };
 

@@ -10,8 +10,6 @@ const App = () => {
   const userEmail = cookies.Email;
   const [tasks, setTasks] = useState(null);
 
-  
-
   const getData = async () => {
     try {
       const response = await fetch(`http://localhost:8000/todos/${userEmail}`);

@@ -10,8 +10,6 @@ const App = () => {
   const userEmail = cookies.Email;
   const [tasks, setTasks] = useState(null);
 
-  
-
   const getData = async () => {
     try {
       const response = await fetch(`http://localhost:8000/todos/${userEmail}`);
@@ -27,7 +25,7 @@ const App = () => {
   }, []);
 
 
-
+  console.log(authToken)
   const sortedTasks = tasks?.sort(
     (a, b) => new Date(a.date) - new Date(b.date)
   );

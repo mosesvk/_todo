@@ -92,8 +92,6 @@ app.post('/signup', (req, res) => {
 
     const token = jwt.sign({email}, 'secret', {expiresIn: '1hr'})
 
-
-    console.log({email, token})
     res.json({email, token})
   } catch (err) {
     console.error(err);

@@ -6,11 +6,9 @@ import { useCookies } from 'react-cookie';
 
 const App = () => {
   const [cookies, setCookie, removeCookie] = useCookies(null);
-  const authToken = cookies.AuthToken;
   const userEmail = cookies.Email;
+  const authToken = cookies.AuthToken;
   const [tasks, setTasks] = useState(null);
-
-  
 
   const getData = async () => {
     try {
@@ -26,7 +24,7 @@ const App = () => {
     if (authToken) getData();
   }, []);
 
-
+  // console.log(tasks)
 
   const sortedTasks = tasks?.sort(
     (a, b) => new Date(a.date) - new Date(b.date)

@@ -1,16 +1,12 @@
 import axios from 'axios';
 import { useState } from 'react';
-import {useCookies} from 'react-cookie'
 
 const Auth = () => {
-  const [cookies, setCookie, removeCookie] = useCookies(null)
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
   const [error, setError] = useState(null);
-
-  console.log(cookies)
 
   const viewLogin = (status) => {
     setError(null);
@@ -35,10 +31,7 @@ const Auth = () => {
     if (data.detail) {
       setError(data.detail)
     } else {
-      setCookie('Email', data.email)
-      setCookie('AuthToken', data.tokem)
-
-      window.location.reload()
+      setCookie(data.email)
     }
   };
 

@@ -3,9 +3,8 @@ const PORT = process.env.PORT || 8000;
 const express = require('express');
 const { v4: uuidv4 } = require('uuid');
 const cors = require('cors');
-const bcrypt = require('bcrypt');
 const pool = require('./db');
-const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
 
 const app = express();
 
@@ -55,52 +54,38 @@ app.put('/todos/:id', async (req, res) => {
   try {
     const updatedTodo = await pool.query(
       'UPDATE todos SET title = $1, progress = $2, user_email = $3 WHERE id = $4',
-      [title, progress, user_email, id]
+      [title, progress,user_email, id]
     );
-    res.json(updatedTodo);
+      res.json(updatedTodo)
   } catch (err) {
     console.error(err);
   }
 });
 
-// delete a todo
+
+// delete a todo 
 app.delete('/todos/:id', async (req, res) => {
-  const { id } = req.params;
+  const {id} = req.params
 
   try {
-    const deletedTodo = pool.query('DELETE FROM public.todos WHERE ID = $1', [
-      id
-    ]);
+    const deletedTodo = pool.query('DELETE FROM public.todos WHERE ID = $1', [id])
 
-    res.send(deletedTodo);
+    res.send(deletedTodo)
   } catch (err) {
-    console.error(err);
+    console.error(err)
   }
-});
+})
 
-// signup
+// signup 
 app.post('/signup', (req, res) => {
-  const { email, password } = req.body.data;
 
-  // hash passwords using bcrypt 
-  const salt = bcrypt.genSaltSync(10)
-  bcrypt.hashSync(password, salt)
-  const hashedPassword = bcrypt.hashSync(password, salt)
+  const {email, password} = req.body.data
 
   try {
-    pool.query('INSERT INTO users (email, hashed_password) VALUES ($1, $2)', [email, hashedPassword])
-
-    const token = jwt.sign({email}, 'secret', {expiresIn: '1hr'})
-
-
-    console.log({email, token})
-    res.json({email, token})
+    
   } catch (err) {
-    console.error(err);
-    if (err) {
-      res.json({detail: err.detail})
-    }
+    console.error(err)
   }
-});
+})
 
 app.listen(PORT, () => console.log(`SERVER is running on PORT ${PORT}`));

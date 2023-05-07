@@ -3,11 +3,10 @@ import axios from 'axios';
 import {useCookies} from 'react-cookie'
 
 const Modal = ({ mode, task, setShowModal, getData }) => {
-  const [cookies, setCookie, removeCookie] = useCookies(null)
   const editMode = mode === 'edit' ? true : false;
 
   const [data, setData] = useState({
-    user_email: editMode ? task.user_email : cookies.Email,
+    user_email: editMode ? task.user_email : 'momoney@test.com',
     title: editMode ? task.title : '',
     progress: editMode ? task.progress : 50,
     date: editMode ? '' : new Date()
