@@ -11,7 +11,6 @@ const Auth = () => {
   const [error, setError] = useState(null);
 
   console.log(email, password, confirmPassword);
-  console.log(isLogin)
 
   const viewLogin = (status) => {
     setError(null);

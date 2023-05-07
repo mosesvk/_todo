@@ -82,7 +82,6 @@ app.delete('/todos/:id', async (req, res) => {
 app.post('/signup', async (req, res) => {
   const { email, password } = req.body.data;
 
-  console.log(req.body.data)
   // hash passwords using bcrypt 
   const salt = bcrypt.genSaltSync(10)
   bcrypt.hashSync(password, salt)
@@ -93,6 +92,8 @@ app.post('/signup', async (req, res) => {
 
     const token = jwt.sign({email}, 'secret', {expiresIn: '1hr'})
 
+
+    console.log({email, token})
     res.json({email, token})
   } catch (err) {
     console.error(err);

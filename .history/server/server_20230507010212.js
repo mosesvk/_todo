@@ -79,10 +79,9 @@ app.delete('/todos/:id', async (req, res) => {
 });
 
 // signup
-app.post('/signup', async (req, res) => {
+app.post('/signup', (req, res) => {
   const { email, password } = req.body.data;
 
-  console.log(req.body.data)
   // hash passwords using bcrypt 
   const salt = bcrypt.genSaltSync(10)
   bcrypt.hashSync(password, salt)
@@ -93,6 +92,8 @@ app.post('/signup', async (req, res) => {
 
     const token = jwt.sign({email}, 'secret', {expiresIn: '1hr'})
 
+
+    console.log({email, token})
     res.json({email, token})
   } catch (err) {
     console.error(err);
@@ -103,22 +104,10 @@ app.post('/signup', async (req, res) => {
 });
 
 // login
-app.post('/login', async (req, res) => {
+app.post('/login', (req, res) => {
   const {email, password} = req.body.data
 
   try {
-    const users = pool.query('SELECT * FROM users WHERE email = $1', [email])
-
-    if (!users.rows.length) return res.json({detail: 'User Does not exist'})
-
-    const success = await bcrypt.compare(password, users.rows[0].hashed_password)
-    const token = jwt.sign({email}, 'secret', {expiresIn: '1hr'})
-
-    if (success) {
-      res.json({'email': users.rows[0].email, token})
-    } else {
-      res.json({detail: 'Login Failed'})
-    }
     
   } catch (err) {
     console.error(err)

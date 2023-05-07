@@ -10,8 +10,7 @@ const Auth = () => {
   const [confirmPassword, setConfirmPassword] = useState(null);
   const [error, setError] = useState(null);
 
-  console.log(email, password, confirmPassword);
-  console.log(isLogin)
+  console.log(cookies);
 
   const viewLogin = (status) => {
     setError(null);
@@ -27,7 +26,7 @@ const Auth = () => {
     }
 
     const res = await axios.post(
-      `${import.meta.env.VITE__SERVER_SIGNUP}${endpoint}`,
+      `${import.meta.env.VITE__SERVER_URL}${endpoint}`,
       { email, password }
     );
 

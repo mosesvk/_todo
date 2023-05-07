@@ -3,7 +3,6 @@ import ListHeader from './components/ListHeader';
 import ListItem from './components/ListItem';
 import Auth from './components/Auth';
 import { useCookies } from 'react-cookie';
-import axios from 'axios';
 
 const App = () => {
   const [cookies, setCookie, removeCookie] = useCookies(null);
@@ -13,7 +12,7 @@ const App = () => {
 
   const getData = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}${userEmail}`);
+      const response = await fetch(`http://localhost:8000/todos/${userEmail}`);
       const json = await response.json();
       setTasks(json);
     } catch (err) {
