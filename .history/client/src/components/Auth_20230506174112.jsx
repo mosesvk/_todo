@@ -21,8 +21,8 @@ const Auth = () => {
           <p></p>
         </form>
         <div className='auth-options'>
-          <button className={!isLogin ? 'auth-options-highlighted' : ''} onClick={() => viewLogin(false)}>Sign Up</button>
-          <button className={isLogin ? 'auth-options-highlighted' : ''} onClick={() => viewLogin(true)}>Login</button>
+          <button className={!isLogin && 'auth-options-highlighted'} onClick={() => viewLogin(false)}>Sign Up</button>
+          <button className={isLogin && 'auth-options-highlighted '} onClick={() => viewLogin(true)}>Login</button>
         </div>
       </div>
     </div>

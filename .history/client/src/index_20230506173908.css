@@ -206,8 +206,3 @@ input {
     padding: 10px;
     color: rgb(35, 38, 47)
 }
-
-.auth-options-highlighted {
-    background-color:  rgb(74, 78, 91);
-    color:rgb(178, 220, 202)
-}

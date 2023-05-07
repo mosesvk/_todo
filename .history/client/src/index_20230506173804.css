@@ -195,19 +195,3 @@ input {
     height: 300px;
     padding: 20px;
 }
-
-.auth-options {
-    display: flex;
-}
-
-.auth-options button {
-    width: 50%;
-    border: none;
-    padding: 10px;
-    color: rgb(35, 38, 47)
-}
-
-.auth-options-highlighted {
-    background-color:  rgb(74, 78, 91);
-    color:rgb(178, 220, 202)
-}
