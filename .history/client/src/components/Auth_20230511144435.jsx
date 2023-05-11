@@ -16,7 +16,9 @@ const Auth = () => {
   };
 
   const handleSubmit = async (e, endpoint) => {
+    // console.log(e, endpoint)
     // e.preventDefatult();
+    console.log('hit - 1')
 
     if (!isLogin && password !== confirmPassword) {
       setError('Make sure passwords match');
@@ -24,11 +26,16 @@ const Auth = () => {
       return;
     }
 
-    console.log(e, endpoint)
-  
+    // const res = await axios.post(
+    //   `${import.meta.env.VITE_SERVER_URL}/${endpoint}`,
+    //   { email, password }
+    // );
+    console.log(`${import.meta.env.VITE_SERVER_URL}/${endpoint}`)
+    
     try {
+
       
-      const res = await axios.post(`${import.meta.env.VITE_SERVER_MAIN}/${endpoint}`, {
+      const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/${endpoint}`, {
         email,
         password
       });
@@ -45,7 +52,6 @@ const Auth = () => {
   
         window.location.reload();
       }
-
     } catch (err) {
       console.error(err)
     }
@@ -55,7 +61,7 @@ const Auth = () => {
   return (
     <div className='auth-container'>
       <div className='auth-container-box'>
-        <form >
+        <form>
           <h2>{isLogin ? 'Please log in' : 'Please sign up'}</h2>
           <input
             type='email'

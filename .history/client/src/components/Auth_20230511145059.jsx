@@ -24,11 +24,10 @@ const Auth = () => {
       return;
     }
 
-    console.log(e, endpoint)
   
     try {
       
-      const res = await axios.post(`${import.meta.env.VITE_SERVER_MAIN}/${endpoint}`, {
+      const res = await axios.post(`${import.meta.env.VITE_SERVER_MAIN}${endpoint}`, {
         email,
         password
       });
@@ -45,7 +44,6 @@ const Auth = () => {
   
         window.location.reload();
       }
-
     } catch (err) {
       console.error(err)
     }
@@ -55,7 +53,7 @@ const Auth = () => {
   return (
     <div className='auth-container'>
       <div className='auth-container-box'>
-        <form >
+        <form onSubmit={(e) => handleSubmit(e, isLogin ? 'login' : 'signup')}>
           <h2>{isLogin ? 'Please log in' : 'Please sign up'}</h2>
           <input
             type='email'
@@ -75,9 +73,8 @@ const Auth = () => {
             />
           )}
           <input
-            type='button'
+            type='submit'
             className='create'
-            onClick={(e) => handleSubmit(e, isLogin ? 'login' : 'signup')}
           />
           {error && <p>{error}</p>}
         </form>

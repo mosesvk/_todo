@@ -192,7 +192,7 @@ input {
 .auth-container-box form {
     display: flex;
     flex-direction: column;
-    height: fit-content;
+    height: fit-content
     padding: 20px;
 }
 

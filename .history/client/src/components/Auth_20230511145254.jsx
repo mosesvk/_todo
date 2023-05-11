@@ -28,7 +28,7 @@ const Auth = () => {
   
     try {
       
-      const res = await axios.post(`${import.meta.env.VITE_SERVER_MAIN}/${endpoint}`, {
+      const res = await axios.post(`${import.meta.env.VITE_SERVER_MAIN}${endpoint}`, {
         email,
         password
       });

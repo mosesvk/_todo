@@ -16,46 +16,42 @@ const Auth = () => {
   };
 
   const handleSubmit = async (e, endpoint) => {
-    // e.preventDefatult();
+    // console.log(e, endpoint)
+    e.preventDefatult();
 
     if (!isLogin && password !== confirmPassword) {
       setError('Make sure passwords match');
-      console.log(error)
       return;
     }
 
-    console.log(e, endpoint)
-  
-    try {
-      
-      const res = await axios.post(`${import.meta.env.VITE_SERVER_MAIN}/${endpoint}`, {
-        email,
-        password
-      });
-  
-      const data = await res.json();
-  
-      console.log(data);
-  
-      if (data.detail) {
-        setError(data.detail);
-      } else {
-        setCookie('Email', data.email);
-        setCookie('AuthToken', data.tokem);
-  
-        window.location.reload();
-      }
+    // const res = await axios.post(
+    //   `${import.meta.env.VITE_SERVER_URL}/${endpoint}`,
+    //   { email, password }
+    // );
 
-    } catch (err) {
-      console.error(err)
+    const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/${endpoint}`, {
+      email,
+      password
+    });
+
+    const data = await res.json();
+
+    console.log(data);
+
+    if (data.detail) {
+      setError(data.detail);
+    } else {
+      setCookie('Email', data.email);
+      setCookie('AuthToken', data.tokem);
+
+      window.location.reload();
     }
-
   };
 
   return (
     <div className='auth-container'>
       <div className='auth-container-box'>
-        <form >
+        <form>
           <h2>{isLogin ? 'Please log in' : 'Please sign up'}</h2>
           <input
             type='email'
@@ -79,7 +75,7 @@ const Auth = () => {
             className='create'
             onClick={(e) => handleSubmit(e, isLogin ? 'login' : 'signup')}
           />
-          {error && <p>{error}</p>}
+          <p>{error}</p>
         </form>
         <div className='auth-options'>
           <button

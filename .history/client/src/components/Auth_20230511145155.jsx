@@ -24,11 +24,10 @@ const Auth = () => {
       return;
     }
 
-    console.log(e, endpoint)
   
     try {
       
-      const res = await axios.post(`${import.meta.env.VITE_SERVER_MAIN}/${endpoint}`, {
+      const res = await axios.post(`${import.meta.env.VITE_SERVER_MAIN}${endpoint}`, {
         email,
         password
       });
@@ -45,7 +44,6 @@ const Auth = () => {
   
         window.location.reload();
       }
-
     } catch (err) {
       console.error(err)
     }
@@ -75,7 +73,7 @@ const Auth = () => {
             />
           )}
           <input
-            type='button'
+            type='submit'
             className='create'
             onClick={(e) => handleSubmit(e, isLogin ? 'login' : 'signup')}
           />
