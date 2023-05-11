@@ -10,6 +10,9 @@ const Auth = () => {
   const [confirmPassword, setConfirmPassword] = useState(null);
   const [error, setError] = useState(null);
 
+  console.log(email, password, confirmPassword);
+  console.log(isLogin)
+
   const viewLogin = (status) => {
     setError(null);
     setIsLogin(status);
@@ -23,26 +26,22 @@ const Auth = () => {
       return;
     }
 
-    try {
-      const res = await axios.post(
-        `${import.meta.env.VITE_SERVER_URL}/${endpoint}`,
-        { email, password }
-      );
+    const res = await axios.post(
+      `${import.meta.env.VITE_SERVER_URL}/${endpoint}`,
+      { email, password }
+    );
 
-      const data = await res.json();
+    const data = await res.json();
 
-      console.log(data);
+    console.log(data)
 
-      if (data.detail) {
-        setError(data.detail);
-      } else {
-        setCookie('Email', data.email);
-        setCookie('AuthToken', data.tokem);
+    if (data.detail) {
+      setError(data.detail);
+    } else {
+      setCookie('Email', data.email);
+      setCookie('AuthToken', data.tokem);
 
-        window.location.reload();
-      }
-    } catch (err) {
-      console.error(err);
+      window.location.reload();
     }
   };
 

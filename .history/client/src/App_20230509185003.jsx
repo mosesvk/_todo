@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const App = () => {
   const [cookies, setCookie, removeCookie] = useCookies(null);
-  const authToken = cookies.AuthToken;
+  const authToken = true
   const userEmail = cookies.Email;
   const [tasks, setTasks] = useState(null);
 
