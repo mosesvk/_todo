@@ -7,7 +7,7 @@ const Modal = ({ mode, task, setShowModal, getData }) => {
   const editMode = mode === 'edit' ? true : false;
 
   const [data, setData] = useState({
-    user_email: editMode ? task.user_email : 'test@test.com',
+    user_email: editMode ? task.user_email : cookies.Email,
     title: editMode ? task.title : null,
     progress: editMode ? task.progress : 50,
     date: editMode ? '' : new Date()
@@ -95,6 +95,7 @@ const Modal = ({ mode, task, setShowModal, getData }) => {
           <input
             className='edit'
             type='submit'
+            value={''}
             onClick={editMode ? editData : postData}
           />
         </form>

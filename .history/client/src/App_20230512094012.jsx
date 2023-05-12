@@ -15,9 +15,9 @@ const App = () => {
 
   const getData = async () => {
     try {
-      const {data} = await axios.get(`${import.meta.env.VITE_SERVER_URL}/${userEmail}`);
-
-      setTasks(data);
+      const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/${userEmail}`);
+      const json = await response.json();
+      setTasks(json);
     } catch (err) {
       console.error(err);
     }
