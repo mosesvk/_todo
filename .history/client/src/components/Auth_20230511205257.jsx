@@ -26,6 +26,7 @@ const Auth = () => {
 
     console.log(e, endpoint)
   
+    try {
       
       const res = await axios.post(`${import.meta.env.VITE_SERVER_MAIN}/${endpoint}`, {
         email,
@@ -38,7 +39,6 @@ const Auth = () => {
   
       if (data.detail) {
         setError(data.detail);
-        console.log(data.detail)
       } else {
         setCookie('Email', data.email);
         setCookie('AuthToken', data.tokem);
@@ -46,6 +46,9 @@ const Auth = () => {
         window.location.reload();
       }
 
+    } catch (err) {
+      if (err) res.json({detail: err.detail})
+    }
 
   };
 

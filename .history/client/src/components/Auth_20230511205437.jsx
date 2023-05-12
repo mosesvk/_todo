@@ -38,7 +38,6 @@ const Auth = () => {
   
       if (data.detail) {
         setError(data.detail);
-        console.log(data.detail)
       } else {
         setCookie('Email', data.email);
         setCookie('AuthToken', data.tokem);
@@ -46,6 +45,7 @@ const Auth = () => {
         window.location.reload();
       }
 
+      if (err) res.json({detail: err.detail})
 
   };
 
