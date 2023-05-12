@@ -9,6 +9,8 @@ const ListItem = ({task, getData}) => {
 
   const [showModal, setShowModal] = useState(false)
 
+  console.log(`${import.meta.env.VITE_SERVER_URL}/${task.id}`)
+
   const deleteData = async (e) => {
 
     try {

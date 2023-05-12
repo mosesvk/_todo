@@ -12,7 +12,7 @@ const ListItem = ({task, getData}) => {
   const deleteData = async (e) => {
 
     try {
-      axios.delete(`${import.meta.env.VITE_SERVER_URL}/${task.id}`)
+      axios.delete(`${import.meta.env.VITE__SERVER_URL}/${task.id}`)
 
       alert(`Delete Successful - todo id: ${id}`)
       setShowModal(false)
