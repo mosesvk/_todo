@@ -6,8 +6,8 @@ const pool = require('./db')
 
 const app = express() 
 
-app.use(cors())
 app.use(express.json())
+app.use(cors())
 
 app.get('/todos/:userEmail', async (req, res) => {
 
