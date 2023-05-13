@@ -16,7 +16,7 @@ app.get('/todos/:userEmail', async (req, res) => {
   try {
     const todos = await pool.query('SELECT * FROM todos WHERE user_email = $1', [email])
 
-    console.log(todos.rows)
+    console.log(todos)
   } catch (err) {
     console.error(err)
   }
