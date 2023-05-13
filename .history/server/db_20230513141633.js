@@ -8,5 +8,3 @@ const pool = new Pool({
     port: process.env.DBPORT,
     database: 'postgres'
 })
-
-module.exports = pool
