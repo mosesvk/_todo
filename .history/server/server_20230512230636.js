@@ -33,7 +33,7 @@ app.post('/todos', async (req, res) => {
   const { user_email, title, progress, date } = req.body.data;
   const id = uuidv4();
 
-  console.log(user_email);
+  console.log(req.body.data);
 
   try {
     const newTodo = await pool.query(
@@ -83,7 +83,6 @@ app.post('/signup', async (req, res) => {
   console.log(req.body)
   const { email, password } = req.body;
 
-  console.log(req.body.data)
   // hash passwords using bcrypt 
   const salt = bcrypt.genSaltSync(10)
   bcrypt.hashSync(password, salt)
