@@ -3,7 +3,6 @@ require('dotenv').config();
 const port = process.env.PORT;
 const cors = require('cors');
 const pool = require('./db');
-const { v4: uuidv4 } = require('uuid');
 
 const app = express();
 
@@ -28,19 +27,14 @@ app.get('/todos/:userEmail', async (req, res) => {
   }
 });
 
-app.post('/todos', async (req, res) => {
-  const id = uuidv4()
+app.post('/todos', (req, res) => {
 
-
-  const {user_email, title, progress, date} = req.body.data
+  console.log(req.body)
 
   try {
-    const newTodo = await pool.query('INSERT INTO todos(id, title, progress, user_email, date) VALUES($1, $2, $3, $4, $5)', [id, title, progress, user_email, date])
-
-    console.log(newTodo)
-    res.json(newTodo)
+    
   } catch (err) {
-    console.error(err)
+    
   }
 })
 
