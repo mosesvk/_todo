@@ -47,11 +47,10 @@ app.put('todos/:id', async (req, res) => {
 
   const {id, user_email, title, progress} = req.body.data
 
-  console.log(req.body.data)
   try {
-    // const updatedTodo = await pool.query('UPDATE todos SET title = $1, progress = $2, user_email = $3, id = $4', [title, progress, user_email, id])
+    const updatedTodo = await pool.query('UPDATE todos SET title = $1, progress = $2, user_email = $3, id = $4', [title, progress, user_email, id])
 
-    // res.json(updatedTodo)
+    res.json(updatedTodo)
   } catch (err) {
     console.error(err)
   }
