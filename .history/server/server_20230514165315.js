@@ -43,15 +43,4 @@ app.post('/todos', async (req, res) => {
   }
 })
 
-app.put('todos/:id', async (req, res) => {
-
-  const {id, user_email, title, progress} = req.body.data
-
-  try {
-    
-  } catch (err) {
-    
-  }
-})
-
 app.listen(port, () => console.log(`App listening on PORT - ${port}`));
