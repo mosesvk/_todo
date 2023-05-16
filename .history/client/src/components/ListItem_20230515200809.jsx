@@ -23,14 +23,12 @@ const ListItem = ({task, getData}) => {
     }
   } 
 
-  const percent = progress > 80 ? 'success' : progress > 50 ? 'warning' : 'danger'
-
   return (
     <div className='list-item'>
       <div className='info-container'>
         <TickIcon />
         <p className='task-title'>{title}</p>
-        <ProgressBar variant={percent} now={percent} label={`${progress}%`}/>
+        <ProgressBar />
       </div>
 
       <div className='button-container'>
