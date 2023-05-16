@@ -48,9 +48,7 @@ app.put('/todos/:id', async (req, res) => {
   const {title, progress, user_email} = req.body.data
 
   try {
-    const updatedTodo = await pool.query('UPDATE todos SET title = $1, progress = $2, user_email = $3 WHERE id = $4', [title, progress, user_email, id])
-
-    res.json(updatedTodo)
+    pool.query('UPDATE todos SET title = $1, progress = $2, user_email = $3 WHERE id = $4', [title, progress, user_email, id])
   } catch (err) {
     console.error(err)
   }
